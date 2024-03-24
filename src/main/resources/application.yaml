@@ -1,0 +1,34 @@
+server:
+  port: 8090
+  servlet:
+    context-path: /api/v1
+
+spring:
+  cloud:
+    gateway:
+      mvc:
+        http-client:
+          type: autodetect
+          connect-timeout: 30s
+          read-timeout: 30s
+        routes:
+          - id: custom_filter_hello_world
+            uri: http://localhost:8888
+            predicates:
+              - Path=/custom/filter/configuration/hello
+              - Method=GET
+            filters:
+              - StripPrefix=2
+              #Custom filter defined in spring.factories
+              - addDynamicRequestHeaderFromSupplier=X-my-header-from-configuration
+  threads:
+    virtual:
+      enabled: true
+
+
+
+#application parameters
+app:
+  gateway:
+    remote-servers:
+      target: http://localhost:8888

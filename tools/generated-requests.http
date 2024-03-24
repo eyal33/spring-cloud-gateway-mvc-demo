@@ -1,0 +1,27 @@
+
+### call /basic/hello (Mapping in HelloWorldRoutingConfig.java)
+GET http://localhost:8090/api/v1/basic/hello
+
+Should get the response:
+{
+  "hello": "world"
+}
+
+
+### call /custom/filter/java/hello (Mapping in CustomFunctionsRoutingConfig.java)
+
+GET http://localhost:8090/api/v1/custom/filter/java/hello
+
+Should get the response:
+{
+  "hello": "custom filter used in java route"
+}
+
+### call /custom/filter/configuration/hello (Mapping in application.yaml using custom filter)
+
+GET http://localhost:8090/api/v1/custom/filter/configuration/hello
+
+Should get the response:
+{
+  "hello": "custom filter used in configuration route"
+}

@@ -1,0 +1,62 @@
+{
+  "mappings": [
+	{
+       "request": {
+			"method": "GET",
+			"url": "/basic/hello"
+			
+		},
+		"response": {
+			"status": 200,
+			"body": "{ \"hello\": \"world\"}",
+			"transformers": ["body-transformer"],
+			"headers" : {
+				"Content-Type" : "application/json;charset=UTF-8"
+			  }
+		}
+    },
+	{
+	  "request": {
+		  "method": "GET",
+		  "url": "/custom/filter/java/hello",
+		  "headers": {
+			  "X-correlation-id" : {
+				  "matches": ".+"
+			  },
+			  "X-source-name" : {
+				  "matches": "Gateway"
+			  }
+		  }
+
+	  },
+	  "response": {
+		  "status": 200,
+		  "body": "{ \"hello\": \"custom filter used in java route\"}",
+		  "transformers": ["body-transformer"],
+		  "headers" : {
+			  "Content-Type" : "application/json;charset=UTF-8"
+		  }
+	  }
+	},
+	{
+	  "request": {
+		  "method": "GET",
+		  "url": "/custom/filter/configuration/hello",
+		  "headers": {
+			  "X-my-header-from-configuration" : {
+				  "matches": ".+"
+			  }
+		  }
+
+	  },
+	  "response": {
+		  "status": 200,
+		  "body": "{ \"hello\": \"custom filter used in configuration route\"}",
+		  "transformers": ["body-transformer"],
+		  "headers" : {
+			  "Content-Type" : "application/json;charset=UTF-8"
+		  }
+	  }
+	}
+  ]
+}
