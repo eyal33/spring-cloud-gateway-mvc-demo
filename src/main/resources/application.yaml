@@ -13,12 +13,12 @@ spring:
           read-timeout: 30s
         routes:
           - id: custom_filter_hello_world
-            uri: http://localhost:8888
+            uri: ${app.gateway.remote-servers.target}
             predicates:
               - Path=/custom/filter/configuration/hello
               - Method=GET
             filters:
-              - StripPrefix=2
+              - StripPrefix=${app.gateway.strip-prefix:2}
               #Custom filter defined in spring.factories
               - addDynamicRequestHeaderFromSupplier=X-my-header-from-configuration
   threads:
