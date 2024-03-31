@@ -1,1 +1,2 @@
-org.springframework.cloud.gateway.server.mvc.filter.FilterSupplier=com.gw.mvc.routes.BeforeFilterFunctions.FilterSupplier
+org.springframework.cloud.gateway.server.mvc.filter.FilterSupplier=com.gw.mvc.routes.CustomBeforeFilterFunctions.FilterSupplier
+org.springframework.cloud.gateway.server.mvc.predicate.PredicateSupplier=com.gw.mvc.routes.GatewayCustomRequestPredicates.PredicateSupplier
