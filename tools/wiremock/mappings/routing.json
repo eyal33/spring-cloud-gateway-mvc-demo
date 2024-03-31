@@ -57,6 +57,26 @@
 			  "Content-Type" : "application/json;charset=UTF-8"
 		  }
 	  }
+	},
+	{
+	  "request": {
+		  "method": "GET",
+		  "urlPattern": "/custom/filter/configuration/helloPredicate[1|2]",
+		  "headers": {
+			  "X-my-header-from-configuration" : {
+				  "matches": ".+"
+			  }
+		  }
+
+	  },
+	  "response": {
+		  "status": 200,
+		  "body": "{ \"hello\": \"custom predicate used in configuration route\"}",
+		  "transformers": ["body-transformer"],
+		  "headers" : {
+			  "Content-Type" : "application/json;charset=UTF-8"
+		  }
+	  }
 	}
   ]
 }
