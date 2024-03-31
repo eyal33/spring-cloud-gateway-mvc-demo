@@ -21,11 +21,18 @@ spring:
               - StripPrefix=${app.gateway.strip-prefix:2}
               #Custom filter defined in spring.factories
               - addDynamicRequestHeaderFromSupplier=X-my-header-from-configuration
+          - id: custom_predicate_hello_world
+            uri: ${app.gateway.remote-servers.target}
+            predicates:
+              - MultiPath=/custom/filter/configuration/helloPredicate1,/custom/filter/configuration/helloPredicate2
+              - Method=GET
+            filters:
+              - StripPrefix=${app.gateway.strip-prefix:2}
+              #Custom filter defined in spring.factories
+              - addDynamicRequestHeaderFromSupplier=X-my-header-from-configuration
   threads:
     virtual:
       enabled: true
-
-
 
 #application parameters
 app:
