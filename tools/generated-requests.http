@@ -17,11 +17,20 @@ Should get the response:
   "hello": "custom filter used in java route"
 }
 
-### call /custom/filter/configuration/hello (Mapping in application.yaml using custom filter)
+### call /custom/filter/configuration/hello (Mapping in application.yaml using custom filter - addDynamicRequestHeaderFromSupplier)
 
 GET http://localhost:8090/api/v1/custom/filter/configuration/hello
 
 Should get the response:
 {
   "hello": "custom filter used in configuration route"
+}
+
+### call /custom/filter/configuration/helloPredicate (Mapping in application.yaml using custom predicate - multiMap)
+
+GET http://localhost:8090/api/v1/custom/filter/configuration/helloPredicate1
+
+Should get the response:
+{
+  "hello": "custom predicate used in configuration route"
 }
